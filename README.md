@@ -39,7 +39,7 @@ Request example using Postman
 
 ![postman01.png](img%2Fpostman01.png)
 
-To read messages sent to this topic, we can use a kafka consumer implementation. Check following repository with a kafka consumer implementation. https://github.com/DenilssonMontoya/kafka-consumer-spring/README.md
+To read messages sent to this topic, we can use a kafka consumer implementation. Check following repository with a kafka consumer implementation. https://github.com/DenilssonMontoya/kafka-consumer-spring/
 
 We can also look into our kafka topic and validate that the message sent by producer has been stored there. To do so, we need to use a tool like **Offset Explorer** .(See https://www.kafkatool.com/documentation/connecting.html )
 
