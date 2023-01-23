@@ -1,3 +1,5 @@
+![SpringKafka.png](img%2FSpringKafka.png)
+---
 # Kafka producer example
 
 **Project to send a message to a Kafka topic using spring from Apache Kafka.**
