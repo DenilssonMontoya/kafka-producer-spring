@@ -1,16 +1,12 @@
 package com.denilsson.kafka.producer.config;
 
-import java.util.HashMap;
 import java.util.Map;
-
 import com.denilsson.kafka.producer.dto.Message;
-import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
@@ -21,6 +17,7 @@ public class KafkaProducerConfig {
 
     @Value("${kafka.producer.bootstrap-servers}")
     private String bootstrapServers;
+
     @Bean
     public Map<String, Object> producerConfigs(){
         return Map.of(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers,
@@ -36,7 +33,7 @@ public class KafkaProducerConfig {
 
     @Bean
     public KafkaTemplate<String, Message> kafkaTemplate() {
-        return new KafkaTemplate<String,Message>(producerFactory());
+        return new KafkaTemplate<>(producerFactory());
     }
 
 }

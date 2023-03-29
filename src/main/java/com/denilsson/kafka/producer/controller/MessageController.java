@@ -15,7 +15,7 @@ public class MessageController {
 
     private final MessageService messageService;
 
-    @PostMapping("/publish/")
+    @PostMapping("/publish")
     public CompletableFuture<String> publishMessage(@RequestBody Message message) {
         return messageService.sendMessageEvent(message);
     }

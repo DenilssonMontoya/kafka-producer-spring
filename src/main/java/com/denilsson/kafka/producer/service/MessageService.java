@@ -18,9 +18,15 @@ public class MessageService {
 
     @Value("${kafka.producer.topic}")
     private String kafkaTopicToSendMessage;
+
     public CompletableFuture<String> sendMessageEvent(Message message){
         return kafkaTemplate.send(kafkaTopicToSendMessage, message.getFrom(), message)
-                .thenApply( event -> "Message sent to: " + event.getProducerRecord().value().getTo());
+                .thenApply((event) -> String.format("Message sent to: %1s [topic:%2s, partition:%3s, offset:%4s]",
+                        event.getProducerRecord().value().getTo(),
+                        event.getRecordMetadata().topic(),
+                        event.getRecordMetadata().partition(),
+                        event.getRecordMetadata().offset()));
+
     }
 
 }
