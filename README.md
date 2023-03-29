@@ -25,7 +25,7 @@ Execute following commands to build and run the Kafka-producer project.
 
 This project will automatically create a Kafka topic called _kfk-message-topic_, this topic will be used to store all message sent by this producer.
 
-Endpoint _publish/_ is going to be available at http://localhost:8088/publish/. Using this endpoint we can send a message having the following structure.
+Endpoint _publish/_ is going to be available at http://localhost:8088/publish. Using this endpoint we can send a message having the following structure.
 
 RequestBody Example:
 

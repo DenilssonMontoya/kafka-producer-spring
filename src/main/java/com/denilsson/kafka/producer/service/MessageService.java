@@ -6,7 +6,6 @@ import com.denilsson.kafka.producer.dto.Message;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +18,15 @@ public class MessageService {
 
     @Value("${kafka.producer.topic}")
     private String kafkaTopicToSendMessage;
+
     public CompletableFuture<String> sendMessageEvent(Message message){
         return kafkaTemplate.send(kafkaTopicToSendMessage, message.getFrom(), message)
-                .thenApply( event -> "Message sent to: " + event.getProducerRecord().value().getTo());
+                .thenApply((event) -> String.format("Message sent to: %1s [topic:%2s, partition:%3s, offset:%4s]",
+                        event.getProducerRecord().value().getTo(),
+                        event.getRecordMetadata().topic(),
+                        event.getRecordMetadata().partition(),
+                        event.getRecordMetadata().offset()));
+
     }
 
 }
