@@ -6,7 +6,17 @@
 
 ## Prerequisites
 - **Java 17**.
+- **Docker environment**
 - **Apache Kafka cluster**, in order to create a Kafka Cluster locally we can use a docker image as described in https://hub.docker.com/r/bitnami/kafka. This will create a Kafka Cluster that will be available at localhost:9092.
+
+## Integration Test
+
+Integration testing allows us to see how different pieces of code or software interact with one another. In this regard, Testcontainers offers full compatibility testing for various components or services that we may require, without the need for any complex configuration on our computers. We can use Testcontainers to create an Apache Kafka instance to be utilized in our integration tests.
+
+```bash
+# Run Integration test with Testcontainers
+./gradlew integrationTest
+```
 
 ## Run Locally
 
