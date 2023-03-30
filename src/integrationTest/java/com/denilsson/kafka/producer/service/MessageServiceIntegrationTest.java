@@ -14,17 +14,13 @@ import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.utility.DockerImageName;
 import java.util.concurrent.ExecutionException;
 
-
 import static org.assertj.core.api.Assertions.assertThat;
 
-
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
+@ActiveProfiles("integration")
+public class MessageServiceIntegrationTest {
 
-public class KafkaTestcontainerTest {
-
-    static Logger logger = LoggerFactory.getLogger(KafkaTestcontainerTest.class);
+    static Logger logger = LoggerFactory.getLogger(MessageServiceIntegrationTest.class);
 
     @Autowired
     MessageService messageService;
